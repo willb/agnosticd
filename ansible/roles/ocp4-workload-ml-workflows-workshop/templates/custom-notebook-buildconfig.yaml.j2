@@ -1,0 +1,41 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewBuild
+  creationTimestamp: null
+  labels:
+    build: jupyter-notebooks
+  name: jupyter-notebooks
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: s2i-minimal-notebook:3.6
+  postCommit: {}
+  resources: {}
+  source:
+    contextDir: minimal-notebook
+    git:
+      uri: https://github.com/vpavlin/jupyter-notebooks
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: python-36:latest
+    type: Source
+  triggers:
+  - github:
+      secret: Eo9u1AokKsD53SKEHz7j
+    type: GitHub
+  - generic:
+      secret: 23-axG0jja0czJWBNWMq
+    type: Generic
+  - type: ConfigChange
+  - imageChange: {}
+    type: ImageChange
+status:
+  lastVersion: 0
+
