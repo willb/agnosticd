@@ -35,7 +35,7 @@ spec:
       from:
         kind: ImageStreamTag
         name: simple-model-s2i:latest
-        namespace: test2
+        namespace: {{ project_name }}
     type: Source
   triggers:
   - github:
