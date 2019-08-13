@@ -20,24 +20,13 @@
     kind: Project
     api_version: project.openshift.io/v1
 
-- name: Create the custom notebook image builder image
-  k8s:
-    state: present
-    namespace: "{{ project_name }}"
-    definition: "{{ item }}"
-  with_items:
-    - "{{ lookup('template', 'python36-imagestream.yaml.j2') }}"
-    - "{{ lookup('template', 'custom-notebook-destination-imagestream.yaml.j2') }}"
-
 - name: Create the custom notebook image
   k8s:
     state: present
     namespace: "{{ project_name }}"
     definition: "{{ item }}"
   with_items:
-    - "{{ lookup('template', 'custom-notebook-buildconfig.yaml.j2') }}"
-    - "{{ lookup('template', 'workshop-notebook-imagestream.yaml.j2') }}"
-    - "{{ lookup('template', 'workshop-notebook-buildconfig.yaml.j2') }}"
+    - "{{ lookup('template', 'custom-notebook-imagestream.yaml.j2') }}"
 
 - name: Create the pipeline builder image
   k8s:
