@@ -37,15 +37,5 @@ spec:
         name: simple-model-s2i:latest
         namespace: {{ project_name }}
     type: Source
-  triggers:
-  - github:
-      secret: OI0r2zKSuRQplHLfVsrq
-    type: GitHub
-  - generic:
-      secret: 3Z5d4xkW0bIhArLOG5ve
-    type: Generic
-  - type: ConfigChange
-  - imageChange: {}
-    type: ImageChange
 status:
   lastVersion: 0

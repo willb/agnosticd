@@ -148,7 +148,7 @@
   retries: 10
   delay: 10
 
-- name: Wait for Open Data Hub operator to finish deploying
+- name: Wait for Open Data Hub operator to finish deploying in {{ project_name }}
   k8s_facts:
     kind: Pod
     namespace: "{{ project_name }}"

@@ -24,7 +24,7 @@ spec:
         deploymentconfig: pipeline
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/test2/pipeline:latest
+      - image: image-registry.openshift-image-registry.svc:5000/{{ project_name }}/pipeline:latest
         name: pipeline
         ports:
         - containerPort: 8080
